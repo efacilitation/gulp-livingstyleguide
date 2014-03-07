@@ -1,14 +1,21 @@
 {
   "name": "gulp-livingstyleguide",
+  "version": "0.0.1",
   "description": "",
-  "url": "https://github.com/efacilitation/gulp-livingstyleguide",
+  "url": "facilitation/gulp-livingstyleguide",
   "author": {
     "name": "eFa Team",
-    "email": "team@efa-gmbh.com"
+    "email": "team@efa-gmbh.com",
+    "url": "https://github.com/efacilitation"
   },
-  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "license": "MIT",
   "main": "index.coffee",
+  "files": [
+    "index.coffee"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/efacilitation/gulp-livingstyleguide"
@@ -19,17 +26,22 @@
   "keywords": [
     "gulp",
     "gulpplugin",
-    "modify"
+    "livingstyleguide",
+    "styleguide",
+    "scss",
+    "sass",
+    "css"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "node-jasmine test/ --growl --autotest"
   },
   "dependencies": {
+    "gulp-util": "*",
     "through2": "*",
     "coffee-script": "*"
   },
   "devDependencies": {
-    "mocha": "*",
+    "jasmine": "*",
     "expect": "*"
   }
 }
