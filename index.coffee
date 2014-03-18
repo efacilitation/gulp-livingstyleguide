@@ -2,27 +2,44 @@
 
 PLUGIN_NAME = 'gulp-livingstyleguide'
 
-livingstyleguide = require 'livingstyleguide'
-gutil            = require 'gulp-util'
-through          = require 'through2'
+gutil       = require 'gulp-util'
+through     = require 'through2'
+module      = require 'module'
+exec        = require('child_process').exec
 
 module.exports = (options = {}) ->
 
-  # throw new gutil.PluginError("gulp-livingstyleguide", "`foo` required")  unless options.foo
+  transformFunc = (file, enc, next) ->
 
-  through.obj (file, enc, next) ->
+    exec "livingstyleguide compile #{file.path}", (error, stdout, stderr) =>
+      if error
+        err = new gutil.PluginError PLUGIN_NAME, error
+        @emit 'error', err
+        return next()
+      else
+        console.log stdout
 
-    if file.isNull()
+      if file.isNull()
+        @push file
+        return next()
+
+      if file.isStream()
+        err = new gutil.PluginError PLUGIN_NAME, 'Streaming not supported'
+        @emit 'error', err
+        return next()
+
+      try
+        file.contents = new Buffer(module(file.contents.toString(), options))
+      catch error
+        err = new gutil.PluginError PLUGIN_NAME, error
+        @emit 'error', err
+
       @push file
       next()
-    if file.isStream()
-      @emit "error", new gutil.PluginError("gulp-livingstyleguide", "Streaming not supported")
-      return next()
 
-    try
-      file.contents = new Buffer(module(file.contents.toString(), options))
-    catch err
-      @emit "error", new gutil.PluginError("gulp-livingstyleguide", err)
-
-    @push file
+  flushFunc = (next) ->
     next()
+
+  through.obj transformFunc, flushFunc
+
+
