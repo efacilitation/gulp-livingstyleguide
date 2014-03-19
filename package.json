@@ -14,7 +14,9 @@
   "license": "MIT",
   "main": "index.coffee",
   "files": [
-    "index.coffee"
+    "index.coffee",
+    "styleguide.jade",
+    "styleguide.css"
   ],
   "repository": {
     "type": "git",
