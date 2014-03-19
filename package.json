@@ -33,15 +33,20 @@
     "css"
   ],
   "scripts": {
-    "test": "node-jasmine test/ --growl --autotest"
+    "test": "mocha test/ --growl --autotest"
   },
   "dependencies": {
     "gulp-util": "*",
     "through2": "*",
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "lodash": "*",
+    "jade": "*",
+    "cheerio": "*",
+    "html": "*",
+    "vinyl": "*"
   },
   "devDependencies": {
-    "jasmine": "*",
-    "expect": "*"
+    "mocha": "*",
+    "chai": "*"
   }
 }
