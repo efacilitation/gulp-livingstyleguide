@@ -9,14 +9,12 @@ exec        = require('child_process').exec
 cheerio     = require 'cheerio'
 jade        = require 'jade'
 html        = require 'html'
-fs          = require 'fs'
 Vinyl       = require 'vinyl'
 
 module.exports = (options = {}) ->
 
   _.defaults options,
     template: "#{__dirname}/styleguide.jade"
-    css: "#{__dirname}/styleguide.css"
 
   transformFunc = (file, enc, next) ->
     if file.isStream()
@@ -52,12 +50,11 @@ module.exports = (options = {}) ->
         return next()
 
       # Add css to the stream
-      cssBuffer = fs.readFileSync options.css
       cssVinyl = new Vinyl
         cwd: file.cwd
         base: file.base
         path: "#{file.base}styleguide.css"
-        contents: cssBuffer
+        contents: new Buffer($('style').html())
       @push cssVinyl
 
       @push file
@@ -67,5 +64,3 @@ module.exports = (options = {}) ->
     next()
 
   through.obj transformFunc, flushFunc
-
-
