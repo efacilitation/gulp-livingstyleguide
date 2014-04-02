@@ -10,6 +10,7 @@ cheerio     = require 'cheerio'
 jade        = require 'jade'
 html        = require 'html'
 Vinyl       = require 'vinyl'
+fs          = require 'fs'
 
 module.exports = (options = {}) ->
 
@@ -23,15 +24,18 @@ module.exports = (options = {}) ->
       return next()
 
     styleguidePath = file.path.replace /\.lsg$/, ''
-    exec "livingstyleguide compile #{file.path}; cat #{styleguidePath} & rm #{styleguidePath};", (error, stdout, stderr) =>
+    exec "livingstyleguide compile #{file.path};", (error, stdout, stderr) =>
       if error
         err = new gutil.PluginError PLUGIN_NAME, error
         @emit 'error', err
         return next()
 
+      tempStyleguide = fs.readFileSync styleguidePath
+      fs.unlink styleguidePath
+
       file.path = styleguidePath
 
-      $ = cheerio.load stdout
+      $ = cheerio.load tempStyleguide
       generated = $('.livingstyleguide--container').html()
       styleguide = jade.renderFile options.template,
         content: generated
