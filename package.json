@@ -43,7 +43,7 @@
     "coffee-script": "*",
     "lodash": "*",
     "jade": "*",
-    "cheerio": "*",
+    "cheerio": "0.14.0",
     "html": "*",
     "vinyl": "*"
   },
