@@ -1,8 +1,8 @@
 {
   "name": "gulp-livingstyleguide",
-  "version": "0.0.2",
-  "description": "git@github.com:efacilitation/gulp-livingstyleguide.git",
-  "url": "facilitation/gulp-livingstyleguide",
+  "version": "0.0.3",
+  "description": "Easily create living style guides with Markdown, Sass/SCSS and Compass using the livingstyleguide gem",
+  "url": "https://github.com/efacilitation/gulp-livingstyleguide",
   "author": {
     "name": "eFa Team",
     "email": "team@efa-gmbh.com",
