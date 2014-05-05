@@ -44,10 +44,10 @@ gulp.task('default', function () {
 
 #### options.template
 
-Type: `String`
-Description: Path to the template Jade. It needs `!= content` where the generated code will be injected and the link-tag to the styleguide.css `link(rel='stylesheet', type='text/css', href='styleguide.css')`
-
-Default Template:
+**Type**: `String`  
+**Description**: Path to the template Jade.  
+It needs `!= content` where the generated code will be injected and the link-tag to the styleguide.css. `link(rel='stylesheet', type='text/css', href='styleguide.css')`  
+**Default Template**:
 ```jade
 doctype html
 html
