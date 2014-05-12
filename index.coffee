@@ -23,17 +23,17 @@ module.exports = (options = {}) ->
       @emit 'error', err
       return next()
 
-    styleguidePath = file.path.replace /\.lsg$/, ''
+    styleguideFilePath = file.path.replace /\..*$/g/, ''
     exec "livingstyleguide compile #{file.path};", (error, stdout, stderr) =>
       if error
         err = new gutil.PluginError PLUGIN_NAME, error
         @emit 'error', err
         return next()
 
-      tempStyleguide = fs.readFileSync styleguidePath
-      fs.unlink styleguidePath
+      tempStyleguide = fs.readFileSync styleguideFilePath
+      fs.unlink styleguideFilePath
 
-      file.path = styleguidePath
+      file.path = "#{styleguideFilePath}.html"
 
       $ = cheerio.load tempStyleguide
       generated = $('.livingstyleguide--container').html()
@@ -57,7 +57,7 @@ module.exports = (options = {}) ->
       cssVinyl = new Vinyl
         cwd: file.cwd
         base: file.base
-        path: "#{file.base}styleguide.css"
+        path: "#{styleguideFilePath}.css"
         contents: new Buffer($('style').html())
       @push cssVinyl
 
