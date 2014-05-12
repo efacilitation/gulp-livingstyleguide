@@ -43,7 +43,7 @@ module.exports = (options = {}) ->
       $ = cheerio.load tempStyleguide
       styleguideFragment = $('.livingstyleguide--container').html()
       styleguide = jade.renderFile options.template,
-        stylesheet: "link(rel='stylesheet', type='text/css', href='#{path.basename styleguideCssFilePath}')"
+        stylesheet: '<link rel="stylesheet", type="text/css", href="' + path.basename styleguideCssFilePath + '">'
         content: styleguideFragment
         title: 'Living Style Guide'
         layout: false
