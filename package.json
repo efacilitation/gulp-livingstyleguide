@@ -1,6 +1,6 @@
 {
   "name": "gulp-livingstyleguide",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Easily create living style guides with Markdown, Sass/SCSS and Compass using the livingstyleguide gem",
   "url": "https://github.com/efacilitation/gulp-livingstyleguide",
   "author": {
