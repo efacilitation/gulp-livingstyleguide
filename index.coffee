@@ -2,15 +2,17 @@
 
 PLUGIN_NAME = 'gulp-livingstyleguide'
 
+fs          = require 'fs'
+path        = require 'path'
+exec        = require('child_process').exec
+
+_           = require 'lodash'
 gutil       = require 'gulp-util'
 through     = require 'through2'
-_           = require 'lodash'
-exec        = require('child_process').exec
+Vinyl       = require 'vinyl'
 cheerio     = require 'cheerio'
 jade        = require 'jade'
 html        = require 'html'
-Vinyl       = require 'vinyl'
-fs          = require 'fs'
 
 module.exports = (options = {}) ->
 
@@ -31,6 +33,7 @@ module.exports = (options = {}) ->
         return next()
 
       styleguideHtmlFilePath = "#{styleguideFilePath}.html"
+      styleguideCssFilePath = "#{styleguideFilePath}.css"
 
       tempStyleguide = fs.readFileSync styleguideHtmlFilePath
       fs.unlink styleguideHtmlFilePath
@@ -38,9 +41,10 @@ module.exports = (options = {}) ->
       file.path = styleguideHtmlFilePath
 
       $ = cheerio.load tempStyleguide
-      generated = $('.livingstyleguide--container').html()
+      styleguideFragment = $('.livingstyleguide--container').html()
       styleguide = jade.renderFile options.template,
-        content: generated
+        stylesheet: "link(rel='stylesheet', type='text/css', href='#{path.basename styleguideCssFilePath}')"
+        content: styleguideFragment
         title: 'Living Style Guide'
         layout: false
 
