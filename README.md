@@ -46,7 +46,7 @@ gulp.task('default', function () {
 
 **Type**: `String`  
 **Description**: Path to the template Jade.  
-It needs `!= content` where the generated code will be injected and the link-tag to the styleguide.css. `link(rel='stylesheet', type='text/css', href='styleguide.css')`  
+It has to include `!= content` where the generated code will be injected and `!= stylesheet` for the stylesheet link.
 **Default Template**:
 ```jade
 doctype html
@@ -57,7 +57,7 @@ html
 		meta(content='The LivingStyleGuide Gem – http://livingstyleguide.org', name='generator')
 		meta(name='description', content=title)
 		title= title
-		link(rel='stylesheet', type='text/css', href='styleguide.css')
+		!= stylesheet
 
 	body.livingstyleguide
 
