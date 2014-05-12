@@ -30,10 +30,12 @@ module.exports = (options = {}) ->
         @emit 'error', err
         return next()
 
-      tempStyleguide = fs.readFileSync styleguideFilePath
-      fs.unlink styleguideFilePath
+      styleguideHtmlFilePath = "#{styleguideFilePath}.html"
 
-      file.path = "#{styleguideFilePath}.html"
+      tempStyleguide = fs.readFileSync styleguideHtmlFilePath
+      fs.unlink styleguideHtmlFilePath
+
+      file.path = styleguideHtmlFilePath
 
       $ = cheerio.load tempStyleguide
       generated = $('.livingstyleguide--container').html()
