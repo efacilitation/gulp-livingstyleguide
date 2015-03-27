@@ -30,10 +30,11 @@
     "css"
   ],
   "scripts": {
-    "test": "node_modules/.bin/mocha test/ --growl --autotest",
-    "prepublish": "node_modules/.bin/coffee -c index.coffee"
+    "test": "mocha test/*.coffee --growl --autotest",
+    "postinstall": "coffee -c index.coffee"
   },
   "dependencies": {
+    "livingstyleguide": "*",
     "gulp-util": "*",
     "through2": "*",
     "lodash": "*",
@@ -43,8 +44,8 @@
     "vinyl": "*"
   },
   "devDependencies": {
-    "mocha": "*",
     "chai": "*",
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "mocha": "*"
   }
 }
