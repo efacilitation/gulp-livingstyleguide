@@ -26,7 +26,7 @@ module.exports = (options = {}) ->
       return next()
 
     styleguideFilePath = file.path.replace /\..*$/g, ''
-    exec "livingstyleguide compile #{file.path};", (error, stdout, stderr) =>
+    exec "bundle exec livingstyleguide compile #{file.path};", (error, stdout, stderr) =>
       if error
         err = new gutil.PluginError PLUGIN_NAME, error
         @emit 'error', err
