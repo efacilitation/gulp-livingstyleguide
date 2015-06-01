@@ -34,18 +34,18 @@
     "postinstall": "coffee -c index.coffee"
   },
   "dependencies": {
-    "livingstyleguide": "*",
-    "gulp-util": "*",
-    "through2": "*",
-    "lodash": "*",
-    "jade": "*",
     "cheerio": "0.14.0",
+    "coffee-script": "*",
+    "gulp-util": "*",
     "html": "*",
+    "jade": "*",
+    "livingstyleguide": "*",
+    "lodash": "*",
+    "through2": "*",
     "vinyl": "*"
   },
   "devDependencies": {
     "chai": "*",
-    "coffee-script": "*",
     "mocha": "*"
   }
 }
