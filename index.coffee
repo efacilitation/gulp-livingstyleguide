@@ -63,7 +63,7 @@ module.exports = (options = {}) ->
       cssVinyl = new Vinyl
         cwd: file.cwd
         base: file.base
-        path: "#{styleguideFilePath}.css"
+        path: styleguideCssFilePath
         contents: new Buffer($('style').html())
       @push cssVinyl
 
