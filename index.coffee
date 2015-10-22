@@ -32,6 +32,11 @@ module.exports = (options = {}) ->
         @emit 'error', err
         return next()
 
+      if stderr.trim().length > 0
+        err = new gutil.PluginError PLUGIN_NAME, stderr
+        @emit 'error', err
+        return next()
+
       styleguideHtmlFilePath = "#{styleguideFilePath}.html"
       styleguideCssFilePath = "#{styleguideFilePath}.css"
 
