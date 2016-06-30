@@ -1,12 +1,11 @@
 # [gulp](http://gulpjs.com)-livingstyleguide
 
-> Easily create living style guides with Markdown, Sass/SCSS and Compass using the [livingstyleguide gem](https://github.com/hagenburger/livingstyleguide)
+> Easily create living styleguides with Markdownn and Sass/Scss using the  [livingstyleguide gem](https://github.com/hagenburger/livingstyleguide)
 
 
 ## Install
 
-First you have to install the livingstyleguide gem:
-I recommend version > 1.0.4
+First you have to install the [livingstyleguide gem](https://github.com/hagenburger/livingstyleguide). We recommend version >= 1.4.0
 
 ```
 gem install livingstyleguide
@@ -15,7 +14,7 @@ gem install livingstyleguide
 Then install the gulp-livingstyleguide npm package:
 
 ```
-npm install --save-dev gulp-livingstyleguide
+npm install gulp-livingstyleguide --save-dev
 ```
 
 
@@ -35,42 +34,6 @@ gulp.task('default', function () {
 ## What is the Plugin doing?
 
 - It compiles the livingstyleguide
-- Extracts the styles-tag from the livingstyleguide output to a sperate Vynl-File and hand it over to the gulp pipe.
-- PrettyPrint the HTML
-
-## API
-
-### livingstyleguide(options)
-
-#### options.template
-
-**Type**: `String`  
-**Description**: Path to the template Jade.  
-It has to include `!= content` where the generated code will be injected and `!= stylesheet` for the stylesheet link.
-**Default Template**:
-```jade
-doctype html
-html
-	head
-		meta(charset='utf-8')
-		meta(content='IE=edge,chrome=1', http-equiv='X-UA-Compatible')
-		meta(content='The LivingStyleGuide Gem – http://livingstyleguide.org', name='generator')
-		meta(name='description', content=title)
-		title= title
-		!= stylesheet
-
-	body.livingstyleguide
-
-		header.livingstyleguide--header
-			h1.livingstyleguide--page-title= title
-
-		.livingstyleguide--container
-			!= content
-
-		footer.livingstyleguide--footer
-```
-
-
 
 ## License
 

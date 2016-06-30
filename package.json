@@ -1,7 +1,7 @@
 {
   "name": "gulp-livingstyleguide",
   "version": "0.1.7",
-  "description": "Easily create living style guides with Markdown, Sass/SCSS and Compass using the livingstyleguide gem",
+  "description": "Easily create living styleguides with Markdownn and Sass/Scss using the livingstyleguide gem",
   "url": "https://github.com/efacilitation/gulp-livingstyleguide",
   "author": {
     "name": "eFa Team",
@@ -30,22 +30,11 @@
     "css"
   ],
   "scripts": {
-    "test": "mocha test/*.coffee --growl --autotest",
     "postinstall": "coffee -c index.coffee"
   },
   "dependencies": {
-    "cheerio": "0.14.0",
     "coffee-script": "*",
     "gulp-util": "*",
-    "html": "*",
-    "jade": "*",
-    "livingstyleguide": "*",
-    "lodash": "*",
-    "through2": "*",
-    "vinyl": "*"
-  },
-  "devDependencies": {
-    "chai": "*",
-    "mocha": "*"
+    "through2": "*"
   }
 }
