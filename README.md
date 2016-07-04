@@ -1,11 +1,11 @@
 # [gulp](http://gulpjs.com)-livingstyleguide
 
-> Easily create living styleguides with Markdownn and Sass/Scss using the  [livingstyleguide gem](https://github.com/hagenburger/livingstyleguide)
+> Easily create living style guides with Markdown and Sass/Scss using the [livingstyleguide gem](https://github.com/livingstyleguide/livingstyleguide)
 
 
 ## Install
 
-First you have to install the [livingstyleguide gem](https://github.com/hagenburger/livingstyleguide). We recommend version >= 1.4.0
+First you have to install the [livingstyleguide gem](https://github.com/livingstyleguide/livingstyleguide). We recommend version >= 1.4.0
 
 ```
 gem install livingstyleguide
