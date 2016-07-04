@@ -1,7 +1,7 @@
 {
   "name": "gulp-livingstyleguide",
   "version": "1.0.0",
-  "description": "Easily create living styleguides with Markdownn and Sass/Scss using the livingstyleguide gem",
+  "description": "Easily create living style guides with Markdown and Sass/Scss using the livingstyleguide gem",
   "url": "https://github.com/efacilitation/gulp-livingstyleguide",
   "author": {
     "name": "eFa Team",
