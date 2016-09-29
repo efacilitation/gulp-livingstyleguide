@@ -16,7 +16,7 @@ module.exports = (options = {}) ->
       @emit 'error', error
       return callback()
 
-    exec "bundle exec livingstyleguide compile #{file.path}", (error) =>
+    exec "livingstyleguide compile #{file.path}", (error) =>
       if error
         error = new gutil.PluginError PLUGIN_NAME, error
         @emit 'error', error
