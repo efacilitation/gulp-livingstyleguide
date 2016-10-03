@@ -8,7 +8,7 @@ exec = require('child_process').exec
 gutil = require 'gulp-util'
 through = require 'through2'
 
-module.exports = (options = {}) ->
+module.exports = (options = {bundle:true}) ->
 
   transform = (file, enc, callback) ->
     if file.isStream()
@@ -16,7 +16,12 @@ module.exports = (options = {}) ->
       @emit 'error', error
       return callback()
 
-    exec "livingstyleguide compile #{file.path}", (error) =>
+    if options.bundle
+      execStr = "bundle exec livingstyleguide compile #{file.path}"
+    else
+      execStr = "livingstyleguide compile #{file.path}"
+
+    exec execStr, (error) =>
       if error
         error = new gutil.PluginError PLUGIN_NAME, error
         @emit 'error', error
